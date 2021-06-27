@@ -1,3 +1,4 @@
+import 'package:drinks_wiki/pages/HomePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      theme: ThemeData.dark(),
+      home: HomePage(),
     );
   }
 }
