@@ -9,16 +9,8 @@ class DrinksGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.76,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 7.0,
-      ),
-      itemCount: snapshot.data.length,
-      itemBuilder: (context, index) {
+    return SliverGrid(
+      delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
         final drink = snapshot.data[index];
         return DrinkCard(
           key: ValueKey(drink.id),
@@ -26,7 +18,14 @@ class DrinksGridView extends StatelessWidget {
           title: drink.name,
           imageUrl: drink.imageUrl,
         );
-      },
+      }, childCount: snapshot.data.length),
+      // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 0.76,
+        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 7.0,
+      ),
     );
   }
 }

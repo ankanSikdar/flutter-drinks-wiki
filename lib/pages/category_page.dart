@@ -27,25 +27,31 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.category),
-        ),
         body: FutureBuilder(
-          future: drinkListFuture,
-          builder:
-              (BuildContext context, AsyncSnapshot<List<DrinkList>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasData) {
-                return DrinksGridView(snapshot);
-              } else {
-                return Center(
-                  child: Text('No Data'),
-                );
-              }
-            } else {
-              return Center(child: CircularProgressIndicator());
-            }
-          },
-        ));
+      future: drinkListFuture,
+      builder: (BuildContext context, AsyncSnapshot<List<DrinkList>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  title: Text(widget.category),
+                ),
+                SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                  sliver: DrinksGridView(snapshot),
+                ),
+              ],
+            );
+          } else {
+            return Center(
+              child: Text('No Data'),
+            );
+          }
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    ));
   }
 }
