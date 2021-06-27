@@ -35,7 +35,16 @@ class _CategoryPageState extends State<CategoryPage> {
             return CustomScrollView(
               slivers: [
                 SliverAppBar(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back_ios_rounded),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
                   title: Text(widget.category),
+                  centerTitle: true,
+                  snap: true,
+                  floating: true,
                 ),
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
