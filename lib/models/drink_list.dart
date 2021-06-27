@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 class DrinkList {
-  final int id;
+  final String id;
   final String name;
   final String imageUrl;
   DrinkList({
