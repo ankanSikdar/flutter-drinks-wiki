@@ -7,8 +7,8 @@ Future<List<DrinkList>> getDrinksList(String name) async {
       'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=$name'));
   final jsonData = jsonDecode(response.body)['drinks'] as List;
   final List<DrinkList> drinksList = [];
-
   jsonData.forEach((drink) {
     drinksList.add(DrinkList.fromMap(drink));
   });
+  return drinksList;
 }
