@@ -41,7 +41,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 0.78,
+                    childAspectRatio: 0.76,
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 7.0,
                   ),
