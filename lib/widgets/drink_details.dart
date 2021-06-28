@@ -49,6 +49,7 @@ class DetailText extends StatelessWidget {
       width: (MediaQuery.of(context).size.width - 90) / 2,
       child: Text(
         text,
+        textAlign: TextAlign.center,
         style: TextStyle(
           color: Theme.of(context).accentColor,
           fontSize: 16.0,
