@@ -12,31 +12,41 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(16.0, 32.0, 0.0, 32.0),
         child: ListView(
           children: [
-            Container(
-              alignment: Alignment.bottomLeft,
-              margin: EdgeInsets.only(bottom: 8.0),
-              child: Text(
-                'Categories',
-                style: TextStyle(fontSize: 42.0),
-              ),
-            ),
+            TitleWidget('Categories'),
             SizedBox(
               height: 400,
               child: CategoryGridView(),
             ),
-            Container(
-              alignment: Alignment.bottomLeft,
-              margin: EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 8.0),
-              child: Text(
-                'Glass Type',
-                style: TextStyle(fontSize: 42.0),
-              ),
-            ),
+            TitleWidget('Glass Type'),
             SizedBox(
               height: 400,
               child: GlassGridView(),
             ),
+            TitleWidget('Alcohol Content'),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class TitleWidget extends StatelessWidget {
+  final String title;
+
+  const TitleWidget(
+    this.title,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.bottomLeft,
+      margin: EdgeInsets.fromLTRB(0.0, 36.0, 0, 8.0),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 42.0,
+          color: Theme.of(context).accentColor,
         ),
       ),
     );
