@@ -32,9 +32,12 @@ class DrinkCard extends StatelessWidget {
             borderRadius: borderRadius,
             child: CachedNetworkImage(
               imageUrl: imageUrl,
-              placeholder: (context, url) {
-                return Center(child: CircularProgressIndicator());
-              },
+              fit: BoxFit.cover,
+              placeholder: (_, __) => Container(
+                height: MediaQuery.of(context).size.height / 4,
+                width: double.infinity,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
           ),
           SizedBox(height: 8.0),
