@@ -71,11 +71,11 @@ class Ingridient extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            measure,
+            ingridient,
             style: TextStyle(fontSize: 18.0),
           ),
           Text(
-            ingridient,
+            measure,
             style: TextStyle(fontSize: 18.0),
           ),
         ],
