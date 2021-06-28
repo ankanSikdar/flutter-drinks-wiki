@@ -1,4 +1,6 @@
+import 'package:drinks_wiki/models/drink_model.dart';
 import 'package:drinks_wiki/repositories/repositories.dart';
+import 'package:drinks_wiki/widgets/drink_image.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -14,17 +16,30 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  Future<Drink> drinkFuture;
+
   @override
   void initState() {
     super.initState();
-    getDrinkDetails(widget.id);
+    drinkFuture = getDrinkDetails(widget.id);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.id),
+      body: FutureBuilder(
+        future: drinkFuture,
+        builder: (BuildContext context, AsyncSnapshot<Drink> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              final drink = snapshot.data;
+              return CustomScrollView(
+                slivers: [DrinkImage(drink: drink)],
+              );
+            }
+          }
+          return Center(child: CircularProgressIndicator());
+        },
       ),
     );
   }
