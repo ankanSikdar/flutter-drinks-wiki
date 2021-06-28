@@ -1,4 +1,4 @@
-import 'package:drinks_wiki/pages/HomePage.dart';
+import 'package:drinks_wiki/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
