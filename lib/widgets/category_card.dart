@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:drinks_wiki/pages/category_page.dart';
+import 'package:drinks_wiki/pages/drink_list_page.dart';
 import 'package:flutter/material.dart';
 
 enum CategoryType { cocktails, glasses }
@@ -23,7 +23,7 @@ class CategoryCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CategoryPage(
+            builder: (context) => DrinkListPage(
               category: title,
               type: type,
             ),

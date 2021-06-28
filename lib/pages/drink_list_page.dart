@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:drinks_wiki/models/drink_list.dart';
 import 'package:drinks_wiki/repositories/repositories.dart';
 
-class CategoryPage extends StatefulWidget {
+class DrinkListPage extends StatefulWidget {
   final String category;
   final CategoryType type;
 
-  const CategoryPage({
+  const DrinkListPage({
     Key key,
     @required this.category,
     @required this.type,
   }) : super(key: key);
 
   @override
-  _CategoryPageState createState() => _CategoryPageState();
+  _DrinkListPageState createState() => _DrinkListPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage> {
+class _DrinkListPageState extends State<DrinkListPage> {
   Future<List<DrinkList>> drinkListFuture;
 
   @override
