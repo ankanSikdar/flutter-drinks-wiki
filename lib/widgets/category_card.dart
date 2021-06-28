@@ -2,14 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:drinks_wiki/pages/category_page.dart';
 import 'package:flutter/material.dart';
 
+enum CategoryType { cocktails, glasses }
+
 class CategoryCard extends StatelessWidget {
   final String title;
   final String imageUrl;
+  final CategoryType type;
 
   const CategoryCard({
     Key key,
     @required this.title,
     @required this.imageUrl,
+    this.type = CategoryType.glasses,
   }) : super(key: key);
 
   @override
@@ -19,7 +23,10 @@ class CategoryCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CategoryPage(category: title),
+            builder: (context) => CategoryPage(
+              category: title,
+              type: type,
+            ),
           ),
         );
       },

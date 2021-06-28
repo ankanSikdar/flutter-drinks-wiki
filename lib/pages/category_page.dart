@@ -1,3 +1,4 @@
+import 'package:drinks_wiki/widgets/category_card.dart';
 import 'package:drinks_wiki/widgets/drinks_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:drinks_wiki/models/drink_list.dart';
@@ -5,10 +6,12 @@ import 'package:drinks_wiki/repositories/repositories.dart';
 
 class CategoryPage extends StatefulWidget {
   final String category;
+  final CategoryType type;
 
   const CategoryPage({
     Key key,
     @required this.category,
+    @required this.type,
   }) : super(key: key);
 
   @override
@@ -21,7 +24,7 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
     super.initState();
-    drinkListFuture = getDrinksList(widget.category);
+    drinkListFuture = getDrinksList(name: widget.category, type: widget.type);
   }
 
   @override
