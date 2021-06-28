@@ -34,6 +34,8 @@ class CategoryCard extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: imageUrl,
                 fit: BoxFit.cover,
+                height: 350,
+                width: 350,
                 placeholder: (_, __) => Container(
                   color: Theme.of(context).primaryColor,
                 ),
