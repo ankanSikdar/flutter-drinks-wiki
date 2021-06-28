@@ -1,5 +1,6 @@
 import 'package:drinks_wiki/widgets/category_grid_view.dart';
 import 'package:drinks_wiki/widgets/glass_grid_view.dart';
+import 'package:drinks_wiki/widgets/type_column_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,6 +24,7 @@ class HomePage extends StatelessWidget {
               child: GlassGridView(),
             ),
             TitleWidget('Alcohol Content'),
+            TypeColumnView(),
           ],
         ),
       ),
