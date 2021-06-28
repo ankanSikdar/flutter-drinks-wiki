@@ -19,8 +19,8 @@ class _DrinkIngridientsState extends State<DrinkIngridients> {
     for (var i = 0; i < widget.drink.ingridients.length; i++) {
       list.add(
         Ingridient(
-          ingridient: widget.drink.ingridients[i],
-          measure: widget.drink.measures[i],
+          ingridient: widget.drink.ingridients[i] ?? '',
+          measure: widget.drink.measures[i] ?? '',
         ),
       );
     }
