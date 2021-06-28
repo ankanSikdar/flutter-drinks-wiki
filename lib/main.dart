@@ -16,6 +16,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colors.black,
         textTheme: GoogleFonts.milongaTextTheme(),
+        appBarTheme: AppBarTheme().copyWith(
+          textTheme: TextTheme(
+            headline6: TextStyle(
+              color: Colors.white,
+              fontFamily: GoogleFonts.milonga().fontFamily,
+              fontSize: 24.0,
+            ),
+          ),
+        ),
       ),
       home: HomePage(),
     );
