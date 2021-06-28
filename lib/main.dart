@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colors.black,
-        textTheme: GoogleFonts.milongaTextTheme(),
+        accentColor: Colors.amber,
+        textTheme:
+            GoogleFonts.milongaTextTheme().apply(bodyColor: Colors.white),
         appBarTheme: AppBarTheme().copyWith(
           textTheme: TextTheme(
             headline6: TextStyle(
