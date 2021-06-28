@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:drinks_wiki/pages/drink_list_page.dart';
 import 'package:flutter/material.dart';
 
-enum CategoryType { cocktails, glasses }
+enum CategoryType { cocktails, glasses, content }
 
 class CategoryCard extends StatelessWidget {
   final String title;

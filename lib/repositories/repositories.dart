@@ -7,7 +7,18 @@ import 'package:meta/meta.dart';
 
 Future<List<DrinkList>> getDrinksList(
     {@required String name, @required CategoryType type}) async {
-  final filter = type == CategoryType.cocktails ? 'c' : 'g';
+  var filter = '';
+  switch (type) {
+    case CategoryType.glasses:
+      filter = 'g';
+      break;
+    case CategoryType.cocktails:
+      filter = 'c';
+      break;
+    case CategoryType.content:
+      filter = 'a';
+      break;
+  }
 
   final response = await http.get(Uri.parse(
       'https://www.thecocktaildb.com/api/json/v1/1/filter.php?$filter=$name'));
