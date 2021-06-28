@@ -1,5 +1,6 @@
 import 'package:drinks_wiki/models/drink_model.dart';
 import 'package:drinks_wiki/repositories/repositories.dart';
+import 'package:drinks_wiki/widgets/drink_details.dart';
 import 'package:drinks_wiki/widgets/drink_image.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,10 @@ class _DetailsPageState extends State<DetailsPage> {
             if (snapshot.hasData) {
               final drink = snapshot.data;
               return CustomScrollView(
-                slivers: [DrinkImage(drink: drink)],
+                slivers: [
+                  DrinkImage(drink: drink),
+                  DrinkDetails(drink: drink),
+                ],
               );
             }
           }
