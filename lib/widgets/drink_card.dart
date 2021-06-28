@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:drinks_wiki/pages/details_page.dart';
 import 'package:flutter/material.dart';
 
 class DrinkCard extends StatelessWidget {
@@ -16,30 +17,40 @@ class DrinkCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(15.0);
-    return Column(
-      children: [
-        ClipRRect(
-          borderRadius: borderRadius,
-          child: CachedNetworkImage(
-            imageUrl: imageUrl,
-            placeholder: (context, url) {
-              return Center(child: CircularProgressIndicator());
-            },
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailsPage(id: id),
           ),
-        ),
-        SizedBox(height: 8.0),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+        );
+      },
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: borderRadius,
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              placeholder: (context, url) {
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
           ),
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 2,
-        ),
-      ],
+          SizedBox(height: 8.0),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ),
+        ],
+      ),
     );
   }
 }

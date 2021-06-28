@@ -49,6 +49,17 @@ class Drink {
   }
 
   factory Drink.fromMap(Map<String, dynamic> map) {
+    List<String> ingridientsList = [];
+    List<String> measureList = [];
+    loop:
+    for (var i = 1; i <= 15; i++) {
+      if (map['strIngredient$i'] != null || map['strMeasure$i'] != null) {
+        ingridientsList.add(map['strIngredient$i']);
+        measureList.add(map['strMeasure$i']);
+      } else {
+        break loop;
+      }
+    }
     return Drink(
       id: map['idDrink'],
       name: map['strDrink'],
@@ -57,8 +68,8 @@ class Drink {
       glass: map['strGlass'],
       instructions: map['strInstructions'],
       imageUrl: map['strDrinkThumb'],
-      ingridients: List<String>.from(map['strIngredient1']),
-      measures: List<String>.from(map['strMeasure1']),
+      ingridients: ingridientsList,
+      measures: measureList,
     );
   }
 
