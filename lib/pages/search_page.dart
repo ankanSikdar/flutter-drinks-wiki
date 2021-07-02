@@ -2,6 +2,7 @@ import 'package:drinks_wiki/models/drink_list.dart';
 import 'package:drinks_wiki/widgets/drinks_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:drinks_wiki/repositories/repositories.dart';
+import 'package:flutter/rendering.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key key}) : super(key: key);
@@ -72,9 +73,16 @@ class _SearchPageState extends State<SearchPage> {
                   ),
           ],
         ),
-        SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-            sliver: DrinksGridView(drinkList)),
+        drinkList.length == 0
+            ? SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 48.0),
+                  child: Center(child: Text('No Results Found')),
+                ),
+              )
+            : SliverPadding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                sliver: DrinksGridView(drinkList)),
       ],
     );
   }
