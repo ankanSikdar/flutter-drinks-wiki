@@ -37,3 +37,14 @@ Future<Drink> getDrinkDetails(String id) async {
   final drink = Drink.fromMap(jsonData);
   return drink;
 }
+
+Future<List<DrinkList>> getSearchedDrinksList({@required String name}) async {
+  final response = await http.get(Uri.parse(
+      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=$name'));
+  final jsonData = jsonDecode(response.body)['drinks'] as List;
+  final List<DrinkList> drinksList = [];
+  jsonData.forEach((drink) {
+    drinksList.add(DrinkList.fromMap(drink));
+  });
+  return drinksList;
+}
