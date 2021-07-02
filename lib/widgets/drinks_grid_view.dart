@@ -3,22 +3,22 @@ import 'package:drinks_wiki/widgets/drink_card.dart';
 import 'package:flutter/material.dart';
 
 class DrinksGridView extends StatelessWidget {
-  final AsyncSnapshot<List<DrinkList>> snapshot;
+  final List<DrinkList> drinkList;
 
-  const DrinksGridView(this.snapshot);
+  const DrinksGridView(this.drinkList);
 
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-        final drink = snapshot.data[index];
+        final drink = drinkList[index];
         return DrinkCard(
           key: ValueKey(drink.id),
           id: drink.id,
           title: drink.name,
           imageUrl: drink.imageUrl,
         );
-      }, childCount: snapshot.data.length),
+      }, childCount: drinkList.length),
       // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

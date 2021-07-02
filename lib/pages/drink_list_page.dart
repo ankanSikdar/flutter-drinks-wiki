@@ -51,7 +51,7 @@ class _DrinkListPageState extends State<DrinkListPage> {
                 ),
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-                  sliver: DrinksGridView(snapshot),
+                  sliver: DrinksGridView(snapshot.data),
                 ),
               ],
             );
