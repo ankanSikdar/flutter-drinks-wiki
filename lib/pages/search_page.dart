@@ -16,6 +16,26 @@ class _SearchPageState extends State<SearchPage> {
   bool isSearching = false;
   List<DrinkList> drinkList = [];
 
+  Future<void> _formSubmit() async {
+    if (isSearching)
+      return;
+    else
+      setState(() {
+        isSearching = true;
+      });
+    final name = _controller.text;
+    drinkList = await getSearchedDrinksList(name: name);
+    setState(() {
+      isSearching = false;
+    });
+
+    // For dismissing the keyboard
+    // Will only unfocus if keyboard is open
+    if (FocusScope.of(context).isFirstFocus) {
+      FocusScope.of(context).requestFocus(new FocusNode());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -29,8 +49,11 @@ class _SearchPageState extends State<SearchPage> {
               hintText: 'Enter Drink Name',
               border: InputBorder.none,
             ),
-            keyboardType: TextInputType.name,
+            textInputAction: TextInputAction.search,
             textAlign: TextAlign.center,
+            onSubmitted: (value) {
+              _formSubmit();
+            },
           ),
           actions: [
             isSearching
@@ -44,17 +67,7 @@ class _SearchPageState extends State<SearchPage> {
                 : IconButton(
                     icon: Icon(Icons.search_sharp),
                     onPressed: () async {
-                      if (isSearching)
-                        return;
-                      else
-                        setState(() {
-                          isSearching = true;
-                        });
-                      final name = _controller.text;
-                      drinkList = await getSearchedDrinksList(name: name);
-                      setState(() {
-                        isSearching = false;
-                      });
+                      _formSubmit();
                     },
                   ),
           ],
