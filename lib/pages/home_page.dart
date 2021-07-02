@@ -8,9 +8,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(16.0, 32.0, 0.0, 32.0),
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(16.0, 0.0, 0.0, 0.0),
         child: ListView(
           children: [
             TitleWidget('Categories'),
@@ -43,7 +43,7 @@ class TitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomLeft,
-      margin: EdgeInsets.fromLTRB(0.0, 36.0, 0, 8.0),
+      margin: EdgeInsets.fromLTRB(0.0, 28.0, 0, 8.0),
       child: Text(
         title,
         style: TextStyle(
