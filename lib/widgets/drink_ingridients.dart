@@ -14,7 +14,7 @@ class DrinkIngridients extends StatefulWidget {
 }
 
 class _DrinkIngridientsState extends State<DrinkIngridients> {
-  List<Widget> getDrinks() {
+  List<Widget> getIngridientsList() {
     final list = <Widget>[];
     for (var i = 0; i < widget.drink.ingridients.length; i++) {
       list.add(
@@ -44,7 +44,7 @@ class _DrinkIngridientsState extends State<DrinkIngridients> {
                 ),
               ),
               SizedBox(height: 4.0),
-              ...getDrinks(),
+              ...getIngridientsList(),
             ],
           ),
         ),
