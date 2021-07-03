@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
                 fontFamily: GoogleFonts.milonga().fontFamily,
                 fontSize: 24.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
