@@ -16,13 +16,15 @@ class _SearchPageState extends State<SearchPage> {
 
   bool isSearching = false;
   List<DrinkList> drinkList = [];
+  String searchedText = '';
 
   Future<void> _formSubmit() async {
-    if (isSearching)
+    if (isSearching || searchedText == _controller.text)
       return;
     else
       setState(() {
         isSearching = true;
+        searchedText = _controller.text;
       });
     final name = _controller.text;
     drinkList = await getSearchedDrinksList(name: name);
@@ -86,7 +88,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    'No Results Found',
+                    isSearching ? 'Searching...' : 'No Results Found',
                     style: TextStyle(fontSize: 18.0),
                   ),
                 ),
