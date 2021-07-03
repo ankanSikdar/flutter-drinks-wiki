@@ -100,4 +100,9 @@ List<CategoryCard> glassCategories = [
     imageUrl:
         'https://www.homewetbar.com/media/catalog/product/cache/265d7bf611d39b8f80e93d32d7319b33/W/1/W105613-coupe-glass-452921.jpg',
   ),
+  CategoryCard(
+    title: 'Nick and Nora Glass',
+    imageUrl:
+        'https://www.thecocktaildb.com/images/media/drink/qrryvq1478820428.jpg',
+  ),
 ];

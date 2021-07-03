@@ -16,22 +16,28 @@ class Category {
 
 List<CategoryCard> categories = [
   CategoryCard(
-    title: Category.cocktail,
-    type: CategoryType.cocktails,
-    imageUrl:
-        'https://www.thecocktaildb.com/images/media/drink/wwpyvr1461919316.jpg',
-  ),
-  CategoryCard(
-    title: Category.homemade,
-    type: CategoryType.cocktails,
-    imageUrl:
-        'https://www.thecocktaildb.com/images/media/drink/qtspsx1472667392.jpg',
-  ),
-  CategoryCard(
     title: Category.beer,
     type: CategoryType.cocktails,
     imageUrl:
         'https://www.thecocktaildb.com/images/media/drink/xxyywq1454511117.jpg',
+  ),
+  CategoryCard(
+    title: Category.cocktail,
+    type: CategoryType.cocktails,
+    imageUrl:
+        'https://www.thecocktaildb.com/images/media/drink/2mcozt1504817403.jpg',
+  ),
+  CategoryCard(
+    title: Category.punchParty,
+    type: CategoryType.cocktails,
+    imageUrl:
+        'https://www.thecocktaildb.com/images/media/drink/xrqxuv1454513218.jpg',
+  ),
+  CategoryCard(
+    title: Category.shot,
+    type: CategoryType.cocktails,
+    imageUrl:
+        'https://www.thecocktaildb.com/images/media/drink/dbtylp1493067262.jpg',
   ),
   CategoryCard(
     title: Category.milkFloatShake,
@@ -43,19 +49,7 @@ List<CategoryCard> categories = [
     title: Category.ordinaryDrink,
     type: CategoryType.cocktails,
     imageUrl:
-        'https://www.thecocktaildb.com/images/media/drink/xrvruq1472812030.jpg',
-  ),
-  CategoryCard(
-    title: Category.punchParty,
-    type: CategoryType.cocktails,
-    imageUrl:
-        'https://www.thecocktaildb.com/images/media/drink/tpxurs1454513016.jpg',
-  ),
-  CategoryCard(
-    title: Category.shot,
-    type: CategoryType.cocktails,
-    imageUrl:
-        'https://www.thecocktaildb.com/images/media/drink/dbtylp1493067262.jpg',
+        'https://www.thecocktaildb.com/images/media/drink/0clus51606772388.jpg',
   ),
   CategoryCard(
     title: Category.softDrink,
@@ -68,6 +62,12 @@ List<CategoryCard> categories = [
     type: CategoryType.cocktails,
     imageUrl:
         'https://www.thecocktaildb.com/images/media/drink/wrvpuu1472667898.jpg',
+  ),
+  CategoryCard(
+    title: Category.homemade,
+    type: CategoryType.cocktails,
+    imageUrl:
+        'https://www.thecocktaildb.com/images/media/drink/uxxtrt1472667197.jpg',
   ),
   CategoryCard(
     title: Category.other,
