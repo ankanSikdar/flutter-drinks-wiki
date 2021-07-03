@@ -1,3 +1,4 @@
+import 'package:drinks_wiki/cubit/favorites_cubit.dart';
 import 'package:drinks_wiki/models/drink_model.dart';
 import 'package:drinks_wiki/repositories/repositories.dart';
 import 'package:drinks_wiki/widgets/drink_details.dart';
@@ -5,6 +6,7 @@ import 'package:drinks_wiki/widgets/drink_image.dart';
 import 'package:drinks_wiki/widgets/drink_ingridients.dart';
 import 'package:drinks_wiki/widgets/drink_instructions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsPage extends StatefulWidget {
   final String id;
@@ -30,23 +32,27 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: drinkFuture,
-        builder: (BuildContext context, AsyncSnapshot<Drink> snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasData) {
-              final drink = snapshot.data;
-              return CustomScrollView(
-                slivers: [
-                  DrinkImage(drink: drink),
-                  DrinkDetails(drink: drink),
-                  DrinkInstructions(drink: drink),
-                  DrinkIngridients(drink: drink)
-                ],
-              );
-            }
-          }
-          return Center(child: CircularProgressIndicator());
+      body: BlocBuilder<FavoritesCubit, FavoritesState>(
+        builder: (context, state) {
+          return FutureBuilder(
+            future: drinkFuture,
+            builder: (BuildContext context, AsyncSnapshot<Drink> snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  final drink = snapshot.data;
+                  return CustomScrollView(
+                    slivers: [
+                      DrinkImage(drink: drink),
+                      DrinkDetails(drink: drink),
+                      DrinkInstructions(drink: drink),
+                      DrinkIngridients(drink: drink)
+                    ],
+                  );
+                }
+              }
+              return Center(child: CircularProgressIndicator());
+            },
+          );
         },
       ),
     );

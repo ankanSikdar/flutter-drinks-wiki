@@ -1,8 +1,9 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-class Drink {
+class Drink extends Equatable {
   final String id;
   final String name;
   final String category;
@@ -79,4 +80,17 @@ class Drink {
   String toString() {
     return 'Drink(id: $id, name: $name, category: $category, alcoholic: $alcoholic, glass: $glass, instructions: $instructions, imageUrl: $imageUrl, ingridients: $ingridients, measures: $measures)';
   }
+
+  @override
+  List<Object> get props => [
+        id,
+        name,
+        category,
+        alcoholic,
+        glass,
+        instructions,
+        imageUrl,
+        ingridients,
+        measures,
+      ];
 }

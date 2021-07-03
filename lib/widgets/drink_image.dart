@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:drinks_wiki/cubit/favorites_cubit.dart';
 import 'package:drinks_wiki/models/drink_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DrinkImage extends StatelessWidget {
   const DrinkImage({
@@ -44,6 +46,21 @@ class DrinkImage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+          Positioned(
+            right: 4.0,
+            bottom: 4.0,
+            child: IconButton(
+              icon: context.read<FavoritesCubit>().isFavorite(drink: drink)
+                  ? Icon(
+                      Icons.favorite,
+                      color: Theme.of(context).accentColor,
+                    )
+                  : Icon(Icons.favorite_outline),
+              onPressed: () {
+                context.read<FavoritesCubit>().toggleFavorite(drink: drink);
+              },
+            ),
+          )
         ],
       ),
     );
