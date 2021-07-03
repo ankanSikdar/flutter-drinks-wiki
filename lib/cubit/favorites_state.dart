@@ -1,7 +1,7 @@
 part of 'favorites_cubit.dart';
 
 class FavoritesState {
-  final List<Drink> favorites;
+  final List<DrinkList> favorites;
   FavoritesState({
     @required this.favorites,
   });
@@ -11,7 +11,7 @@ class FavoritesState {
   }
 
   FavoritesState copyWith({
-    List<Drink> favorites,
+    List<DrinkList> favorites,
   }) {
     return FavoritesState(
       favorites: favorites ?? this.favorites,
