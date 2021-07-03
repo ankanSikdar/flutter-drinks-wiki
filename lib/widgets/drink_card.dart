@@ -46,6 +46,16 @@ class DrinkCard extends StatelessWidget {
                     width: double.infinity,
                     color: Theme.of(context).primaryColor,
                   ),
+                  errorWidget: (context, url, error) {
+                    return Center(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 4,
+                        width: double.infinity,
+                        color: Theme.of(context).primaryColor,
+                        child: Center(child: Text('Failed to load image')),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
