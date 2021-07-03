@@ -18,13 +18,16 @@ class _DrinkIngridientsState extends State<DrinkIngridients> {
   List<Widget> getIngridientsList() {
     final list = <Widget>[];
     for (var i = 0; i < widget.drink.ingridients.length; i++) {
-      final ingridient = widget.drink.ingridients[i] ?? '';
-      final measure = widget.drink.measures[i] ?? '';
-      if (ingridient.length != 0 || measure.length != 0) {
+      String ingridient = widget.drink.ingridients[i] ?? '';
+      String measure = widget.drink.measures[i] ?? '';
+      if (measure.isEmpty) {
+        measure = '1';
+      }
+      if (ingridient.isNotEmpty) {
         list.add(
           Ingridient(
-            ingridient: widget.drink.ingridients[i],
-            measure: widget.drink.measures[i],
+            ingridient: ingridient,
+            measure: measure,
           ),
         );
       }
@@ -93,6 +96,16 @@ class Ingridient extends StatelessWidget {
                 width: 15.0,
                 color: Theme.of(context).primaryColor,
               ),
+              errorWidget: (context, url, error) {
+                return Center(
+                  child: Container(
+                    height: 150.0,
+                    width: 15.0,
+                    color: Theme.of(context).primaryColor,
+                    child: Center(child: Text('Failed to load image')),
+                  ),
+                );
+              },
             ),
           ),
         ],

@@ -44,8 +44,8 @@ class _DetailsPageState extends State<DetailsPage> {
                 slivers: [
                   DrinkImage(drink: drink),
                   DrinkDetails(drink: drink),
+                  DrinkIngridients(drink: drink),
                   DrinkInstructions(drink: drink),
-                  DrinkIngridients(drink: drink)
                 ],
               );
             }
