@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:drinks_wiki/models/drink_model.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +18,16 @@ class _DrinkIngridientsState extends State<DrinkIngridients> {
   List<Widget> getIngridientsList() {
     final list = <Widget>[];
     for (var i = 0; i < widget.drink.ingridients.length; i++) {
-      list.add(
-        Ingridient(
-          ingridient: widget.drink.ingridients[i] ?? '',
-          measure: widget.drink.measures[i] ?? '',
-        ),
-      );
+      final ingridient = widget.drink.ingridients[i] ?? '';
+      final measure = widget.drink.measures[i] ?? '';
+      if (ingridient.length != 0 || measure.length != 0) {
+        list.add(
+          Ingridient(
+            ingridient: widget.drink.ingridients[i],
+            measure: widget.drink.measures[i],
+          ),
+        );
+      }
     }
     return list;
   }
@@ -70,13 +75,25 @@ class Ingridient extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            ingridient,
-            style: TextStyle(fontSize: 18.0),
+          Expanded(
+            child: Text(
+              '$measure $ingridient',
+              style: TextStyle(fontSize: 18.0),
+            ),
           ),
-          Text(
-            measure,
-            style: TextStyle(fontSize: 18.0),
+          Container(
+            height: 150,
+            width: 150,
+            margin: EdgeInsets.symmetric(vertical: 8.0),
+            child: CachedNetworkImage(
+              imageUrl:
+                  'https://www.thecocktaildb.com/images/ingredients/$ingridient-Medium.png',
+              placeholder: (context, url) => Container(
+                height: 150.0,
+                width: 15.0,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
           ),
         ],
       ),
