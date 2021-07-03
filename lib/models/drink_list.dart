@@ -21,8 +21,25 @@ class DrinkList extends Equatable {
     );
   }
 
+  factory DrinkList.fromMapWithActualNames(Map<String, dynamic> map) {
+    return DrinkList(
+      id: map['id'],
+      name: map['name'],
+      imageUrl: map['imageUrl'],
+    );
+  }
+
+  factory DrinkList.fromJsonWithActualNames(String source) =>
+      DrinkList.fromMapWithActualNames(json.decode(source));
+
   factory DrinkList.fromJson(String source) =>
       DrinkList.fromMap(json.decode(source));
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'imageUrl': imageUrl,
+      };
 
   @override
   String toString() => 'DrinkList(id: $id, name: $name, imageUrl: $imageUrl)';
