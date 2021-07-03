@@ -1,5 +1,6 @@
 import 'package:drinks_wiki/widgets/category_card.dart';
 import 'package:drinks_wiki/widgets/drinks_grid_view.dart';
+import 'package:drinks_wiki/widgets/error_text.dart';
 import 'package:flutter/material.dart';
 import 'package:drinks_wiki/models/drink_list.dart';
 import 'package:drinks_wiki/repositories/repositories.dart';
@@ -55,14 +56,12 @@ class _DrinkListPageState extends State<DrinkListPage> {
                 ),
               ],
             );
-          } else {
-            return Center(
-              child: Text('No Data'),
-            );
           }
-        } else {
-          return Center(child: CircularProgressIndicator());
+          if (snapshot.hasError) {
+            return ErrorText(snapshot.error);
+          }
         }
+        return Center(child: CircularProgressIndicator());
       },
     ));
   }
