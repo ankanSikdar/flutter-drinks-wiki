@@ -49,7 +49,12 @@ class _SearchPageState extends State<SearchPage> {
             decoration: InputDecoration(
               hintText: 'Enter Drink Name',
               border: InputBorder.none,
+              hintStyle: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
+            style: TextStyle(fontSize: 18.0),
             textInputAction: TextInputAction.search,
             textAlign: TextAlign.center,
             onSubmitted: (value) {
@@ -75,9 +80,15 @@ class _SearchPageState extends State<SearchPage> {
         ),
         drinkList.length == 0
             ? SliverToBoxAdapter(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 48.0),
-                  child: Center(child: Text('No Results Found')),
+                child: Container(
+                  margin: EdgeInsets.only(
+                    top: (MediaQuery.of(context).size.height / 3),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    'No Results Found',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
                 ),
               )
             : SliverPadding(
