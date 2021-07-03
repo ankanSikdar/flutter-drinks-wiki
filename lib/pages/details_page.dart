@@ -32,27 +32,23 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<FavoritesCubit, FavoritesState>(
-        builder: (context, state) {
-          return FutureBuilder(
-            future: drinkFuture,
-            builder: (BuildContext context, AsyncSnapshot<Drink> snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  final drink = snapshot.data;
-                  return CustomScrollView(
-                    slivers: [
-                      DrinkImage(drink: drink),
-                      DrinkDetails(drink: drink),
-                      DrinkInstructions(drink: drink),
-                      DrinkIngridients(drink: drink)
-                    ],
-                  );
-                }
-              }
-              return Center(child: CircularProgressIndicator());
-            },
-          );
+      body: FutureBuilder(
+        future: drinkFuture,
+        builder: (BuildContext context, AsyncSnapshot<Drink> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              final drink = snapshot.data;
+              return CustomScrollView(
+                slivers: [
+                  DrinkImage(drink: drink),
+                  DrinkDetails(drink: drink),
+                  DrinkInstructions(drink: drink),
+                  DrinkIngridients(drink: drink)
+                ],
+              );
+            }
+          }
+          return Center(child: CircularProgressIndicator());
         },
       ),
     );
