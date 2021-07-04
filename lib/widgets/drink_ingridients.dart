@@ -45,7 +45,7 @@ class _DrinkIngridientsState extends State<DrinkIngridients> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${getIngridientsList().length} Ingridients: ',
+                'Ingridients (${getIngridientsList().length}):',
                 style: TextStyle(
                   color: Theme.of(context).accentColor,
                   fontSize: 20.0,
