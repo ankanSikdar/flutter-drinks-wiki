@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.ankan.drinks_wiki">
    <application
-        android:label="drinks_wiki"
+        android:label="Drinks Wiki"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
