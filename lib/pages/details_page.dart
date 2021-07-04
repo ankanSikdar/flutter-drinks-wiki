@@ -42,6 +42,16 @@ class _DetailsPageState extends State<DetailsPage> {
               final drink = snapshot.data;
               return CustomScrollView(
                 slivers: [
+                  SliverAppBar(
+                    leading: IconButton(
+                      icon: Icon(Icons.arrow_back_ios_rounded),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    title: Text('Details'),
+                    centerTitle: true,
+                  ),
                   DrinkImage(drink: drink),
                   DrinkDetails(drink: drink),
                   DrinkIngridients(drink: drink),
