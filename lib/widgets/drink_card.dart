@@ -40,10 +40,12 @@ class DrinkCard extends StatelessWidget {
                 borderRadius: borderRadius,
                 child: CachedNetworkImage(
                   imageUrl: imageUrl,
+                  height: 200.0,
+                  width: 200.0,
                   fit: BoxFit.cover,
                   placeholder: (_, __) => Container(
-                    height: MediaQuery.of(context).size.height / 4,
-                    width: double.infinity,
+                    height: 200.0,
+                    width: 200.0,
                     color: Theme.of(context).primaryColor,
                   ),
                   errorWidget: (context, url, error) {
@@ -62,9 +64,15 @@ class DrinkCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: isFavorite
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8.0, 0, 2.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      context.read<FavoritesCubit>().toggleFavorite(
+                          drink: DrinkList(
+                              id: id, name: title, imageUrl: imageUrl));
+                    },
+                    child: isFavorite
                         ? Icon(
                             Icons.favorite,
                             size: 20.0,
@@ -74,11 +82,8 @@ class DrinkCard extends StatelessWidget {
                             Icons.favorite_outline,
                             size: 20.0,
                           ),
-                    onPressed: () {
-                      context.read<FavoritesCubit>().toggleFavorite(
-                          drink: DrinkList(
-                              id: id, name: title, imageUrl: imageUrl));
-                    }),
+                  ),
+                ),
               ],
             ),
             Text(

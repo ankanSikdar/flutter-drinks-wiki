@@ -9,6 +9,7 @@ class DrinksGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.of(context).size.height;
     return SliverGrid(
       delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
         final drink = drinkList[index];
@@ -22,9 +23,9 @@ class DrinksGridView extends StatelessWidget {
       // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.65,
+        childAspectRatio: deviceHeight < 600 ? 0.60 : 0.65,
         crossAxisSpacing: 10.0,
-        mainAxisSpacing: 0.0,
+        mainAxisSpacing: 10.0,
       ),
     );
   }
