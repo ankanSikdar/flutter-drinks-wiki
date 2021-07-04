@@ -41,41 +41,46 @@ class DrinkImage extends StatelessWidget {
                     stops: [0, 1.0]),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
-              child: Text(
-                drink.name,
-                style: TextStyle(color: Colors.white, fontSize: 28.0),
-                textAlign: TextAlign.center,
-              ),
+            Row(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 40,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(16.0, 0, 0.0, 16.0),
+                    child: Text(
+                      drink.name,
+                      style: TextStyle(color: Colors.white, fontSize: 28.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                    onTap: () {
+                      context.read<FavoritesCubit>().toggleFavorite(
+                            drink: DrinkList(
+                              id: drink.id,
+                              name: drink.name,
+                              imageUrl: drink.imageUrl,
+                            ),
+                          );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(8.0),
+                      child: context.read<FavoritesCubit>().isFavorite(
+                                drink: DrinkList(
+                                  id: drink.id,
+                                  name: drink.name,
+                                  imageUrl: drink.imageUrl,
+                                ),
+                              )
+                          ? Icon(
+                              Icons.favorite,
+                              color: Theme.of(context).accentColor,
+                            )
+                          : Icon(Icons.favorite_outline),
+                    )),
+              ],
             ),
-            Positioned(
-              right: 4.0,
-              bottom: 4.0,
-              child: IconButton(
-                icon: context.read<FavoritesCubit>().isFavorite(
-                          drink: DrinkList(
-                            id: drink.id,
-                            name: drink.name,
-                            imageUrl: drink.imageUrl,
-                          ),
-                        )
-                    ? Icon(
-                        Icons.favorite,
-                        color: Theme.of(context).accentColor,
-                      )
-                    : Icon(Icons.favorite_outline),
-                onPressed: () {
-                  context.read<FavoritesCubit>().toggleFavorite(
-                        drink: DrinkList(
-                          id: drink.id,
-                          name: drink.name,
-                          imageUrl: drink.imageUrl,
-                        ),
-                      );
-                },
-              ),
-            )
           ],
         ),
       );
