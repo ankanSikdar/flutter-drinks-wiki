@@ -35,14 +35,12 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     if (isFavorite(drink: drink)) {
       // If drink is already in favorites then remove it
       newList.remove(drink);
-      updateSharedPreferences(newList);
-      emit(state.copyWith(favorites: newList));
     } else {
       // If drink is not in favorites then add it
       newList.add(drink);
-      updateSharedPreferences(newList);
-      emit(state.copyWith(favorites: newList));
     }
+    updateSharedPreferences(newList);
+    emit(state.copyWith(favorites: newList));
   }
 
   Future<void> updateSharedPreferences(List<DrinkList> drinkList) async {
